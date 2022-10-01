@@ -1,38 +1,44 @@
 class Solution:
     
-    def helper(self,arr):
-        
+    def __init__(self):
         self.maxrobbed=0
-        memo={}
-        
-        def robber(i):
+        self.arr=[]
+        self.memo={}
+    def robber(self,i):
             
-            if i>=len(arr):
+            if i>=len(self.arr):
                 return 0
             
             robbed=0
             
-            for x in range(i+2,len(arr)):               
+            for x in range(i+2,len(self.arr)):               
                 
-                if x not  in memo:
+                if x not  in self.memo:
                     
-                    r=robber(x)
+                    r=self.robber(x)
                 else:
-                    r=memo[x]
+                    r=self.memo[x]
                 robbed=max(r,robbed)
                
-            memo[i]=robbed+arr[i]
+            self.memo[i]=robbed+self.arr[i]
             
-            return memo[i]
+            return self.memo[i]
             
+    
+    def helper(self,arr):
+        
+        self.maxrobbed=0
+        self.memo={}
+        self.arr=arr
+        
            
         for i in range(len(arr)):
             
-            if i in memo:
-                self.maxrobbed=max(self.maxrobbed,memo[i])
+            if i in self.memo:
+                self.maxrobbed=max(self.maxrobbed,self.memo[i])
                 continue
 
-            self.maxrobbed=max(self.maxrobbed,robber(i))
+            self.maxrobbed=max(self.maxrobbed,self.robber(i))
         return self.maxrobbed
                 
         
