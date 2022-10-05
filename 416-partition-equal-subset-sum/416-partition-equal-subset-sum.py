@@ -3,15 +3,18 @@ class Solution:
         if sum(nums)%2!=0:
             return False
         
+        
         s=set()
         s.add(0)
+        target=sum(nums)//2
         
-        for num in nums:
-            
+        for i in range(len(nums)-1,-1,-1):
             ds=set()
             for elem in s:
-                ds.add(elem+num)
+                ds.add(elem+nums[i])
                 ds.add(elem)
+                if target in s:
+                    return True
             s=ds
         
-        return True if sum(nums)//2 in s else False
+        return True if target in s else False
