@@ -18,15 +18,7 @@ class Solution:
                 p2+=1
             self.arr.append(arr)
             addRow(arr,currow+1)
-                
             
-            
-                
-            
-            
-            
-            
-        
         
         addRow([1],1)
             
