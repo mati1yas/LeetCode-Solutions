@@ -6,9 +6,9 @@ class Solution:
         self.result=[]
         def sub(index,arr):
             
-            # if index>=len(nums):
-                # if arr not in self.result:
-            self.result.append(arr)
+            if index>=len(nums):
+                if arr not in self.result:
+                    self.result.append(arr)
                 
             recent =float('inf') 
             for i in range(index,len(nums)):
@@ -17,7 +17,7 @@ class Solution:
                     
                     continue
                 sub(i+1,arr+[nums[i]])
-                # sub(i+1,arr)
+                sub(i+1,arr)
                 recent=nums[i]
                 
                 
