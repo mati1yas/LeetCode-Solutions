@@ -12,10 +12,10 @@ class Solution:
                 return 
             recent =float('inf') 
             for i in range(index,len(nums)):
-                # if recent=
-#                 if recent==nums[i]:
+                
+                if recent==nums[i]:
                     
-#                     continue
+                    continue
                 sub(i+1,arr+[nums[i]])
                 sub(i+1,arr)
                 recent=nums[i]
