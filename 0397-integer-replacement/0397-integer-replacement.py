@@ -4,6 +4,8 @@ class Solution:
         
         self.operations=float('inf')
         def dfs(num,op):
+            if op>=self.operations:
+                return
             if num==1:
                 self.operations=min(self.operations,op)
                 return 
