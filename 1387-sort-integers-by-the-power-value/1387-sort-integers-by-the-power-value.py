@@ -16,11 +16,6 @@ class Solution:
                 dfs(num*3+1,op+1,x)
             
             
-            
-            
-            
-            
-            
         
         arr=[]
         for i in range(lo,hi+1):
