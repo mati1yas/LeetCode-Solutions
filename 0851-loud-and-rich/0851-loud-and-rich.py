@@ -12,7 +12,7 @@ class Solution:
             indegree[rich[1]]+=1
         
         queue=collections.deque()
-        print(richerthan)
+        
         for person in indegree:
             if indegree[person]==0:
                 queue.append(person)
@@ -25,8 +25,7 @@ class Solution:
                 
                 if quiet[self.answer[neighbor]]>quiet[self.answer[richperson]]:
                     self.answer[neighbor]=self.answer[richperson]
-               
-                
+                               
                 indegree[neighbor]-=1
                 if indegree[neighbor]==0:
                     queue.append(neighbor)
