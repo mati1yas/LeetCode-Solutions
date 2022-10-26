@@ -8,8 +8,7 @@ class Solution:
         for digit in (digits):
             total+=10**n*digit
             n-=1
-        print(total)
-        
+       
         arr=[]
         while total:
             rem=total%10
