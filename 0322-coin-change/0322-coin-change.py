@@ -11,8 +11,7 @@ class Solution:
             
             
             minAmount=float('inf')
-            for coin in coins:
-                
+            for coin in coins:               
                 
                 if current-coin in memo:
                     minAmount=min(minAmount,memo[current-coin])
