@@ -1,46 +1,50 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        # Count number of letters in board and store it in a dictionary
-        boardDic = defaultdict(int)
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                boardDic[board[i][j]] += 1
-
-        # Count number of letters in word
-        # Check if board has all the letters in the word and they are atleast same count from word
-        wordDic = Counter(word)
-        for c in wordDic:
-            if c not in boardDic or boardDic[c] < wordDic[c]:
+        
+        countBoardLetters=defaultdict(int)
+        #counting letters
+        for row in range(len(board)):
+            for col in range(len(board[0])):
+                
+                countBoardLetters[board[row][col]]+=1
+        countWordLetters=Counter(word)
+        
+        for char in countWordLetters:
+            
+            if char not in countBoardLetters or countWordLetters[char]>countBoardLetters[char]:
                 return False
-
-        # Traverse through board and if word[0] == board[i][j], call the DFS function
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if board[i][j] == word[0]:
-                    if self.dfs(i, j, 0, board, word):
-                        return True
-
-        return False
-
-    def dfs(self, i, j, k, board, word):
-        # Recursion will return False if (i,j) is out of bounds or board[i][j] != word[k] which is current letter we need
-        if i < 0 or j < 0 or i >= len(board) or j >= len(board[0]) or \
-           k >= len(word) or word[k] != board[i][j]:
-            return False
-
-        # If this statement is true then it means we have reach the last letter in the word so we can return True
-        if k == len(word) - 1:
-            return True
-
-        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-
-        for x, y in directions:
-            # Since we can't use the same letter twice, I'm changing current board[i][j] to -1 before traversing further
-            tmp = board[i][j]
-            board[i][j] = -1
-
-            # If dfs returns True then return True so there will be no further dfs
-            if self.dfs(i + x, j + y, k + 1, board, word): 
+                   
+        
+        
+        inbound=lambda row,col: 0<=row<len(board) and 0<=col<len(board[0])
+        
+        def backtrack(curRow,curCol,pointer):
+            if not inbound(curRow,curCol) or word[pointer]!=board[curRow][curCol] or pointer>=len(word):
+                return False
+            if pointer==len(word)-1:
                 return True
-
-            board[i][j] = tmp
+            
+            
+            
+            
+            
+            DIRS=[[1,0],[0,1],[-1,0],[0,-1]]
+            temp=board[curRow][curCol]
+            board[curRow][curCol]="#"
+            for x,y in DIRS:
+                
+                if backtrack (curRow+x,curCol+y,pointer+1) :
+                    return True
+            board[curRow][curCol]=temp
+            
+            
+        for row in range(len(board)):
+            for col in range(len(board[0])):
+                
+                if word[0]==board[row][col]:
+                    if backtrack(row,col,0):
+                        return True
+        
+        
+        
+        
