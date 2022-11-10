@@ -4,20 +4,20 @@ class Solution:
         
         
         line=0
-        bigCount=0
+        verticalMax=0
         for x1, y1 in points:
             
             slope=defaultdict(int)
-            count=0
+            verticalPoint=0
             for x2, y2 in points:
                 if x2==x1  :
-                    count+=1
+                    verticalPoint+=1
                     continue
                 m=(y2-y1)/(x2-x1)
                 slope[m]+=1
             if slope:
                 line=max(line,max(slope.values()))
-            bigCount=max(bigCount,count)
+            verticalMax=max(verticalMax,verticalPoint)
           
         
-        return max(line+1,bigCount)
+        return max(line+1,verticalMax)
