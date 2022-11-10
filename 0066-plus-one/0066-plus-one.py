@@ -1,19 +1,24 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
         
+        digits.insert(0,0)
+        carry=1
+        pointer=len(digits)-1
+        while carry!=0:
+            
+            if digits[pointer]+carry>9:
+                carry=1
+                digits[pointer]=0
+                pointer-=1
+            else:
+                digits[pointer]+=1
+                carry=0
         
-        total=1
-        n=len(digits)-1
+        return digits if digits[0]!=0 else digits[1:]
+            
+            
+            
         
-        for digit in (digits):
-            total+=10**n*digit
-            n-=1
-       
-        arr=[]
-        while total:
-            rem=total%10
-            arr.insert(0,rem)
-            total//=10
-        return arr
+            
             
             
