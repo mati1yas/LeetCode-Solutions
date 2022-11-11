@@ -4,13 +4,13 @@ class Solution:
         if len(nums)<2:
             return len(nums)
         
-        rep=1
-        for  i in range(1,len(nums)):
-            
-            if nums[i]!=nums[rep-1]:
-                nums[rep]=nums[i]
-                
         
-                rep+=1
+        curP=1
+        
+        for i in range(1,len(nums)):
             
-        return rep
+            if nums[i]!=nums[curP-1]:
+                nums[curP]=nums[i]
+                curP+=1
+            
+        return curP
