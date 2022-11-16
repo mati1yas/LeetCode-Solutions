@@ -17,7 +17,7 @@ class Solution:
             if pattern==0:
                 while col<=right:
                     elements.append(matrix[row][col])
-                    print('fortt',row,col)
+                    
                     col+=1
                     pattern=1
                 top+=1
@@ -29,7 +29,7 @@ class Solution:
             
                 while row<=bottom:
                     elements.append(matrix[row][col])
-                    print('down',row,col)
+                   
                     row+=1
                     pattern=2
                 row-=1
@@ -39,7 +39,7 @@ class Solution:
             if pattern==2:
                 while col>=left:
                     elements.append(matrix[row][col])
-                    print('back',row,col)
+                    
                     col-=1
                     pattern=3
                 col+=1
@@ -49,7 +49,7 @@ class Solution:
             if pattern==3:
                 while row>=top:
                     elements.append(matrix[row][col])
-                    print('up',row,col)
+                    
                     row-=1
                     pattern=0
                 row+=1
