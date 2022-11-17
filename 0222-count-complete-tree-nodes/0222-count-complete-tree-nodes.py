@@ -7,40 +7,33 @@
 class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         
-        
         if not root:
             return 0
         
-        def rightheight(node):
-            d=0
+        def leftHeight(node):
+            h=0
             while node:
-                d+=1
-                node=node.right
-            return d
-            
-        def leftheight(node):
-            d=0
-            while node:
-                d+=1
+                h+=1
                 node=node.left
-            return d
+            return h
+        def rightHeight(node):
+            h=0
+            while node:
+                h+=1
+                node=node.right
+            return h
+                
         
-        lh=leftheight(root)
-        rh=rightheight(root)
+        
+        
+        # here am at specific node I have to calculate leftMost and rightMost height
+        
+        lh=leftHeight(root)
+        
+        rh=rightHeight(root)
         
         if lh==rh:
-            return 2**(rh)-1
+            return 2**lh-1
         else:
             return self.countNodes(root.left)+self.countNodes(root.right)+1
-        
-        
-            
-            
-            
-        
-        
-        
-        
-        
-        
         
