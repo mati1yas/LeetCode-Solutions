@@ -3,6 +3,8 @@ class Solution:
         
         
         def subBox(row,col):
+            
+            # checks if there is duplicate in subBox
             visited=set()
             
             count=0
@@ -12,7 +14,7 @@ class Solution:
                         # print(board[row+i][col+j])
                         visited.add(board[row+i][col+j])
                         count+=1
-            # print(count==len(visited))
+            
             return count==len(visited)
             
             
@@ -20,6 +22,8 @@ class Solution:
         for i in range(len(board)):
             visited=set()
             count=0
+            
+            # checks row wise if there is duplicate
             for j in range(len(board)):
                 if board[i][j].isdigit():
                     visited.add(board[i][j])
@@ -29,6 +33,7 @@ class Solution:
                 return False
             visited=set()
             count=0
+            # below block checks column wise
             for k in range(len(board)):
                 
                 if board[k][i].isdigit():
