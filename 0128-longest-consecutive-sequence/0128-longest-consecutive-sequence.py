@@ -3,37 +3,25 @@ class Solution:
         
         if not nums:
             return 0
-        # large=max(nums)
-        member = set(nums)
-        # parent={x:x+1 for x in range(min(nums),large+1) if x in member}
+        if len(nums)==1:
+            return 1
         nums.sort()
-        parent={}
         
-        for x in nums:
+        left=0
+        right=1
+        
+        long=0
+        count=1
+        print(nums)
+        while right<len(nums):
             
-            parent[x]=x+1
-        
-        
-        
-        
-        
-        visited = set()
-        
-        def union(start,end):
-            
-            if end in member:
-                visited.add(end)
-                return union(end,parent[end])
-            return start
-            
-        
-            
-        longest=0
-        for node in parent:
-            
-            if node not in visited:
-                nodeParent=union(node,parent[node])
-                longest=max(longest,nodeParent-node+1)
-        return longest
-                
-                
+            if nums[right]!=nums[left]:
+                if abs(nums[left]-nums[right])==1:
+                    count+=1
+                else:
+                    long=max(long,count)
+                    count=1
+            right+=1
+            left+=1
+        long=max(long,count)
+        return long
