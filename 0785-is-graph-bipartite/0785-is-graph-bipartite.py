@@ -22,25 +22,21 @@ class Solution:
                 cur=queue.popleft()
                 visited.add(cur)
                 bl=True
-
-                if cur in blue:
-                    for nbr in graph[cur]:
-                        if nbr in blue:
-                            print(cur,nbr,"inblu")
-                            return False
-                else:
+                if cur not in blue:
                     bl=False
-                    for nbr in graph[cur]:
-                        if nbr in red:
-                            print(cur,nbr,"inrea")
-                            return False
+
 
                 for nbr in graph[cur]:
+                    
                     if nbr not in visited:
                         queue.append(nbr)
                     if bl:
+                        if nbr in blue:
+                            return False
                         red.add(nbr)
                     else:
+                        if nbr in red:
+                            return False
                         blue.add(nbr)
             return True
 
