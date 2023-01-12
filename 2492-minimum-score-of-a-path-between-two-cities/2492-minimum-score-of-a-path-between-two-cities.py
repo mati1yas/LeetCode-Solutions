@@ -5,15 +5,15 @@ class Solution:
             graph[u][v] = graph[v][u] = w
         
         res = inf
-        vis = set()
-        dq = deque([1])
+        visited = set()
+        myDeque = deque([1])
 
-        while dq:
-            node = dq.popleft()
+        while myDeque:
+            node = myDeque.popleft()
             for adj, scr in graph[node].items():
-                if adj not in vis:
-                    dq.append(adj)
-                    vis.add(adj)
+                if adj not in visited:
+                    myDeque.append(adj)
+                    visited.add(adj)
                 res = min(res,scr)
                 
         return res
