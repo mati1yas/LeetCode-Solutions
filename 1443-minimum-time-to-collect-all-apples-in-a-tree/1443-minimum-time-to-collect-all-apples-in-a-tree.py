@@ -1,8 +1,6 @@
 class Solution:
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
         
-
-
         graph=defaultdict(list)
 
         for start,end in edges:
@@ -16,7 +14,8 @@ class Solution:
             total=0
             for nbr in graph[node]:
                 if nbr not in visited:
-                    total+=dfs(nbr,visited.union({nbr}))
+                    visited.add(nbr)
+                    total+=dfs(nbr,visited)
             
             if hasApple[node]:
                 total+=2
