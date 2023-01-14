@@ -6,15 +6,21 @@ class Solution:
         def generateSubsets(subset,i):
             
             if i>=len(nums):
-                self.ret.append(subset)
-                return 
+                
+                return [subset]
             
             
+            ret=[]
         
             take=generateSubsets(subset+[nums[i]],i+1)
-            not_take=generateSubsets(subset,i+1)           
+            not_take=generateSubsets(subset,i+1)   
+            
+            ret.extend(take)
+            ret.extend(not_take)
+            
+            return ret
             
             
             
-        generateSubsets([],0)
-        return self.ret
+        return generateSubsets([],0)
+        
