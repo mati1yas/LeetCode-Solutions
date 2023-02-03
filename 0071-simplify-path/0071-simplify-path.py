@@ -4,9 +4,6 @@ class Solution:
         
         
         directories=path.split('/')
-        print(directories)
-        
-        
         
         
         stack=[]
