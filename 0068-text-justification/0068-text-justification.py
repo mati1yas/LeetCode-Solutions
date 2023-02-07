@@ -4,38 +4,41 @@ class Solution:
         
         
         
-        line_chars = 0         
-        line_words = []         
-        justified = []          
+        countChars = 0         
+        lineOfWord = []         
+        answer = []          
 
         for word in words:
 
-            if line_chars + len(line_words) + len(word) <= maxWidth:    # add word to current line
-                line_words.append(word)
-                line_chars += len(word)
+            if countChars + len(lineOfWord) + len(word) <= maxWidth:    
+                lineOfWord.append(word)
+                countChars += len(word)
 
             else:                                  
-                gaps = len(line_words) - 1          # nb gaps between words
-                spaces = maxWidth - line_chars      # nb of spaces to make line maxWidth
-                line = [line_words[0]]              # list of words and spaces
-                if gaps == 0:                       # pad end if single word
-                    line.append(" " * spaces)
+                gaps = len(lineOfWord) - 1          
+                spaces = maxWidth - countChars    
+                curBuiltLine = [lineOfWord[0]]   
+                
+                if gaps == 0:                       
+                    curBuiltLine.append(" " * spaces)
 
-                for line_word in line_words[1:]:    # distribute spaces between other words
-                    space = spaces//gaps
-                    if spaces % gaps != 0:          # round up if uneven division of spaces
-                        space += 1
-                    line.append(" " * space)        # add space
-                    spaces -= space                 # reduce remaining spaces and gaps
+                for w in lineOfWord[1:]:    
+                    avSpace = spaces//gaps
+                    
+                    if spaces % gaps != 0:          
+                        avSpace += 1
+                    curBuiltLine.append(" " * avSpace)   
+                    curBuiltLine.append(w)
+                    spaces -= avSpace                 
                     gaps -= 1
-                    line.append(line_word)
+                    
 
-                justified.append("".join(line))
+                answer.append("".join(curBuiltLine))
 
-                line_words = [word]                 # add word to next line.
-                line_chars = len(word)
+                lineOfWord = [word]                 
+                countChars = len(word)
 
-        final_line = " ".join(line_words)           # pad final line with spaces
-        final_line += " " * (maxWidth - len(final_line))
-        justified.append(final_line)
-        return justified 
+        line = " ".join(lineOfWord)           
+        line += " " * (maxWidth - len(line))
+        answer.append(line)
+        return answer
