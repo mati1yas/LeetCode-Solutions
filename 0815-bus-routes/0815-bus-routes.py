@@ -17,7 +17,7 @@ class Solution:
         queue=collections.deque()
         queue.append((source,0))  # start , steps
         visited=set()
-        visitedStations=set()
+        visitedIndexes=set()
         visited.add(source)
         
         while queue:
@@ -29,8 +29,9 @@ class Solution:
             
             for nbrIndex in indexLocations[node]:
                 
-                if nbrIndex in visitedStations:
+                if nbrIndex in visitedIndexes:
                     continue
+                visitedIndexes.add(nbrIndex)
                 
                 
                 for nbrBus in routes[nbrIndex]:               
@@ -39,7 +40,7 @@ class Solution:
                     if nbrBus not in visited:
                         visited.add(nbrBus)
                         queue.append((nbrBus,steps+1))
-                visitedStations.add(nbrIndex)
+                
                     
         return -1
                     
