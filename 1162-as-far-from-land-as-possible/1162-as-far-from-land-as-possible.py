@@ -19,7 +19,7 @@ class Solution:
                 
                 if grid[i][j]==1:
                     land+=1
-                    queue.append((i,j))
+                    queue.append((i,j,0))
                     visited.add((i,j))
                     
         
@@ -34,26 +34,24 @@ class Solution:
         while queue:
             
             
-            for _ in range(len(queue)):
-                curR,curC=queue.popleft()
-                
-                for x,y in DIRS:
-                    nx,ny=x+curR,curC+y
-                    
-                    
-                    if inbound(nx,ny ) and (nx,ny ) not in visited:
-                        sea+=1
-                        queue.append((nx,ny))
-                        visited.add((nx,ny))
+            
+            curR,curC,d=queue.popleft()
+            level=max(level,d)
+
+            for x,y in DIRS:
+                nx,ny=x+curR,curC+y
+
+
+                if inbound(nx,ny ) and (nx,ny ) not in visited:
+                    sea+=1
+                    queue.append((nx,ny,d+1))
+                    visited.add((nx,ny))
                         
-            level+=1
-            
-            
             
             
         if not sea or not land:
             return -1
-        return level-1
+        return level
             
                 
                 
