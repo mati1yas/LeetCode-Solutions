@@ -3,9 +3,9 @@ class Solution:
         
         
         
-        ans=0
+        count=0
         
         while "01" in s:
             s=s.replace("01","10")
-            ans+=1
-        return ans
+            count+=1
+        return count
