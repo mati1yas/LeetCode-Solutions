@@ -1,11 +1,20 @@
 class Solution:
-    def diffWaysToCompute(self, expression: str) -> List[int]:
+    
+    def __init__(self):
+        self.memo={}
+    
+    
+    
+    def diffWaysToCompute(self, expression: str) -> List[int]:    
         
-        
-        
+        if expression in self.memo:
+            
+            return self.memo[expression]
         
         if expression.isdigit():
-            return [int(expression)]
+            
+            self.memo[expression]=[int(expression)]
+            return self.memo[expression]
         
             
         
@@ -18,6 +27,9 @@ class Solution:
             
                 right=self.diffWaysToCompute(expression[i+1:])
                 
+                
+                
+#                 we are trying to get possible combinations of the left and right result
                 for l in left:
                     for r in right:
                         
@@ -25,6 +37,7 @@ class Solution:
                         
                 
         
+        self.memo[expression]=result
         return result
                         
                         
