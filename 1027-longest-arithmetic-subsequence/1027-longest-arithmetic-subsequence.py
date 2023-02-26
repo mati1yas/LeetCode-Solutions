@@ -3,16 +3,17 @@ class Solution:
         
         
         
-        freq=defaultdict(int)
+        prevArthimetics=defaultdict(int)
+                
         
-        for i in range(1,len(nums)):
+        for i in range(len(nums)):
             
             for j in range(i):
+                
                 diff=nums[i]-nums[j]
                 
-                freq[i,diff]=freq[j,diff]+1
+                prevArthimetics[(i,diff)]=prevArthimetics[(j,diff)]+1
                 
         
-        return max(freq.values())+1
-                
+        return max(prevArthimetics.values())+1
                 
