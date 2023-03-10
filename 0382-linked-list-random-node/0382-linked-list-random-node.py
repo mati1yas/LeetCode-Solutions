@@ -9,11 +9,8 @@ class Solution:
 
     def __init__(self, head: Optional[ListNode]):
         
-        self.root=head
-        
+        self.root=head        
         self.elements=[]
-     
-        
         cur=head
         
         while cur:
