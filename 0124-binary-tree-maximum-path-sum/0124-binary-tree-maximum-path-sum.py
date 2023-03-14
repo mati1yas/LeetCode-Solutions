@@ -15,10 +15,16 @@ class Solution:
             
             left=dfs(root.left)
             right=dfs(root.right)
+            
+            
+            
+            curMaxPath=max(left[0]+root.val,right[0]+root.val,root.val)
+            
+            globalMax=max(left[0]+root.val,right[0]+root.val,root.val,right[0],left[0],left[0]+right[0]+root.val,right[1],left[1])
+            
 
 
-            return [max(max(left[0],right[0])+root.val,root.val),max(left[1],left[0],right[0],right[1],left[0]+right[0]+root.val,root.val,max(left[0],right[0])+root.val)]
-        
+            return [curMaxPath,globalMax]
         
         return dfs(root)[1]
             
