@@ -8,19 +8,19 @@ class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         
         
-        def dfs(nums):
-            if not nums:
+        def dfs(left , right):
+            
+            
+            if left>right:
+                
                 return 
-
-
-            mid=len(nums)//2
             
+            mid=(left+right)//2
             
-            
-            leftR=dfs(nums[:mid])
+            leftR=dfs(left,mid-1)
         
-            rightR=dfs(nums[mid+1:])
-            
+            rightR=dfs(mid+1,right)
+
             node=TreeNode(nums[mid])
             
             node.left=leftR
@@ -28,16 +28,5 @@ class Solution:
             
             return node
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         
-        
-        return dfs(nums)
+        return dfs(0,len(nums)-1)
