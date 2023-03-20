@@ -5,7 +5,7 @@ class Solution:
         for ast in asteroids:
             
             
-            
+            op=False
             
             while stack and (stack[-1]>0  and ast<0 ) :
                 
@@ -15,12 +15,15 @@ class Solution:
                     
                 elif abs(stack[-1])==abs(ast): # both explode
                     stack.pop()
+                    
+                    op=True
                     break
-                else:            # right explodes
+                else:      
+                    # right explodes
+                    op=True
                     break
                     
-            else:
-                
+            if not op:
                 stack.append(ast)
                     
                     
