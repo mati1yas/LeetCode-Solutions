@@ -4,7 +4,7 @@ class Solution:
         
         
         self.memo={}
-        def buyTickets(index,covered,cost):
+        def buyTickets(index):
             
             
             if index==len(days):
@@ -19,19 +19,19 @@ class Solution:
             minr=0
             
             
-            oneDay=buyTickets(index+1,covered.union(set([i for i in range(days[index],days[index]+1)])),cost+costs[0])+costs[0]
+            oneDay=buyTickets(index+1)+costs[0]
 
             i=index
             while i <len(days) and days[i]<days[index]+7:
                 i+=1
 
-            sevenDay=buyTickets(i,covered.union(set([i for i in range(days[index],days[index]+7)])),cost+costs[1])+costs[1]
+            sevenDay=buyTickets(i)+costs[1]
 
             i=index
             while i <len(days) and days[i]<days[index]+30:
                 i+=1
 
-            thirtyDay=buyTickets(i,covered.union(set([i for i in range(days[index],days[index]+30)])),cost+costs[2])+costs[2]
+            thirtyDay=buyTickets(i)+costs[2]
 
 
             minr=min(oneDay,sevenDay,thirtyDay)
@@ -43,5 +43,5 @@ class Solution:
                 
             return minr
              
-        return buyTickets(0,set(),0)
+        return buyTickets(0)
         
