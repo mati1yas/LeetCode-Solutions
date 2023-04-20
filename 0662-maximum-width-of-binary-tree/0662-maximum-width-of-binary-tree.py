@@ -9,28 +9,29 @@ class Solution:
         
         
         self.level=defaultdict(list)
-        def dfs(node,row,col):
+        
+        
+        def dfs(root,row,col):
             
-            
-            if not node:
+            if not root:
                 return 
+            
+            
             self.level[row].append(col)
             
             
-            dfs(node.left,row+1,2*col+1)
-            dfs(node.right,row+1,2*col+2)
-            
+            dfs(root.left,row+1,2*col+1)
+            dfs(root.right,row+1,2*col+2)
             
             
         dfs(root,0,0)
-            
-       
         
-        width=0
-        
-        for level in self.level.values():
+    
+        width=float('-inf')
+        for cols in self.level.values():
             
-            width=max(width,max(level)-min(level))
-        return width+1
+            width=max(width,max(cols)-min(cols))
             
+            
+        return width +1
             
