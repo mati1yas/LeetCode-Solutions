@@ -3,17 +3,19 @@ class Solution:
         
         
         
-#          the main idea of this approach is to count how many increasing sequence we have 
-
-#         if we get decreasing it means we have to start a new sequence 
-        prev='z'
-        sequence=0
-        for char in word:
+        count=0
+        i=0
+        while i<len(word):
             
-            if char <=prev:
-                sequence+=1
-            prev=char
-        return sequence*3-len(word)
-            
+            for char in 'abc':
+                if i<len(word) and char == word[i]:
+                    i+=1
+                else:
+                    count+=1
+        
+        return count
+                    
+                    
+        
                 
             
