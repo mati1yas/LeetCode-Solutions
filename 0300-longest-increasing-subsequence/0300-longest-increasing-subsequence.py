@@ -3,18 +3,21 @@ class Solution:
         
         
         
-        dp=[1]* len(nums)
+        
+        sub=[]
         
         
-        long=1
-        for i in range(1,len(nums)):
+        for num in nums:
             
-            for j in range(i):
+            idx=bisect_left(sub,num)
+            
+            if idx>=len(sub):
                 
-                if nums[i]>nums[j]:
-                    dp[i]=max(dp[i],dp[j]+1)
-            
-            long=max(long,dp[i])
-            
+                sub.append(num)
+                
+            else:
+                sub[idx]=num
+                
         
-        return long
+        return len(sub)
+                
