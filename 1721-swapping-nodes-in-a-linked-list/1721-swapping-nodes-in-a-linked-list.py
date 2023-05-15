@@ -10,8 +10,7 @@ class Solution:
         slow=head
         fast=head
         num=k
-        while num>1:
-            
+        while num>1:            
             fast=fast.next
             
             num-=1
