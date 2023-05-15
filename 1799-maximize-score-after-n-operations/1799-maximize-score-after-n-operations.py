@@ -23,11 +23,13 @@ class Solution:
             for i in range(len(nums)):
                 for j in range(i+1,len(nums)):
                     
-                    if (mask>>i)&1 == 1 or (mask>>j)&1==1:
+                    if (mask>>i)&1 == 1 or (mask>>j)&1==1:  # is checking if either of them has been picked or not .
                         continue
                         
                         
-                    newMask=mask|(1<<i)|1<<j
+                    newMask=mask|(1<<i)|1<<j  # marking the new  picked items
+
+
                     curVal=math.gcd(nums[i],nums[j])*(n+1)
                     m=max(m,getScore(n+1,newMask)+curVal)
                         
