@@ -20,8 +20,8 @@ class Solution:
         
        
         for i in range(k,len(nums1)):
-            total+=pairs[i][0]
             
+            total+=pairs[i][0]
             
             num= h.heappop(heap)
             
