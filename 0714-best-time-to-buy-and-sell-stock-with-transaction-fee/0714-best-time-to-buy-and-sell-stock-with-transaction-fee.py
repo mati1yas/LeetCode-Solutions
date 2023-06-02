@@ -16,11 +16,9 @@ class Solution:
                 
                 
                 sell = prices[idx] + dfs(idx + 1, False) - fee
-                skip = dfs(idx + 1, True)
-                
-                
-                    
-                memo[(idx, state)] = max(sell, skip)
+                not_sell = dfs(idx + 1, True)
+                 
+                memo[(idx, state)] = max(sell, not_sell)
                     
                     
                     
