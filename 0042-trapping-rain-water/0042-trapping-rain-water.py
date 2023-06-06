@@ -21,7 +21,7 @@ class Solution:
                 
                 
                 trapped= min(height[stack[-1]] , height[idx]) - height[i]
-                ans+= width * trapped 
+                ans+= (width * trapped )
                 
             stack.append(idx)
                 
