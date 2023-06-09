@@ -28,12 +28,6 @@ class Solution:
                 take=change(amount-coins[index],index)
                 
             
-            
-            
-            
-            
-                        
-            
             memo[(amount,index)]=take+not_take
             return memo[(amount,index)]
                     
