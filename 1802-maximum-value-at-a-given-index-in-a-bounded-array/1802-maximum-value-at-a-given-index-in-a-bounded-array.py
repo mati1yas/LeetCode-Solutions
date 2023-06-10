@@ -25,27 +25,31 @@ class Solution:
             right_val=target-(n-index-1)
             leftTotal=0
             rightTotal=0
+            
+            
             if left_val<=0:
-                ones=abs(left_val)+1
-                
-                leftTotal=calcSum(1,target)+ones
-                
+                ones=abs(left_val)+1                
+                leftTotal=calcSum(1,target)+ones                
             else:
                 
                 leftTotal=calcSum(left_val,index+1)
                 
-                 
+             
+            
+            
+            
             if right_val<=0:
                 ones=abs(right_val)+1
                 
                 rightTotal=calcSum(1,target)+ones
-                
-                
-                
+                  
             else:
-                
-                
+                 
                 rightTotal=calcSum(right_val,target-right_val+1)
+                
+                
+                
+                
                 
                 
             
