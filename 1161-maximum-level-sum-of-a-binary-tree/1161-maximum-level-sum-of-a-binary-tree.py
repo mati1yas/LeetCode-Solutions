@@ -7,25 +7,43 @@
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         
-        graph=defaultdict(int)
         
-        self.ans=(float('-inf'),-1)
-        def dfs(root,level):
-            
-            if not root:
-                return 
-            
-            graph[level]+=root.val
-                  
-            dfs(root.left,level+1)
-            dfs(root.right,level+1)            
-            
         
-        dfs(root,1)
-       
-        for level, tot in graph.items():
-            if graph[level]>self.ans[0]:                
-                self.ans=(graph[level],level)
+        queue= collections.deque()
+        
+        queue.append(root)
+        
+        ans = 0
+        maxSum = float('-inf')
+        level=0
+        while queue:
             
             
-        return self.ans[1]
+            
+            tot=0
+            flag=False
+            
+            for i in range(len(queue)):
+                
+                node = queue.popleft()
+                if node :
+                    tot+=node.val
+                    flag=True
+                    
+                    queue.append(node.left)
+                    queue.append(node.right)
+            
+            
+            if not flag:
+                break
+            if tot> maxSum:
+                ans=level
+                maxSum=tot
+            
+            level+=1
+            
+            
+            
+            
+        return ans+1
+                
