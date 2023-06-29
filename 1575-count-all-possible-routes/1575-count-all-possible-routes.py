@@ -21,8 +21,6 @@ class Solution:
             
             for i in range(len(locations)):
                 
-                
-            
                 if i == city :
                     continue
                     
