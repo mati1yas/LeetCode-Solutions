@@ -18,6 +18,8 @@ class Solution:
                     champagne[level+1][glass]+=overflow
                     champagne[level+1][glass+1]+=overflow
         
+        
+        
         return min(1,champagne[query_row][query_glass])
                 
                 
