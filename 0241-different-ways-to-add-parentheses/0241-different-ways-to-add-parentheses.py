@@ -8,36 +8,30 @@ class Solution:
     def diffWaysToCompute(self, expression: str) -> List[int]:    
         
         if expression in self.memo:
-            
             return self.memo[expression]
         
         if expression.isdigit():
-            
             self.memo[expression]=[int(expression)]
             return self.memo[expression]
         
+        res=[]
+        for idx,char in enumerate(expression): 
             
-        
-        result=[]
-        for i, char in enumerate(expression):
             
-            if char in "+-*":
+            if char in '*-+':
                 
-                left=self.diffWaysToCompute(expression[0:i])
-            
-                right=self.diffWaysToCompute(expression[i+1:])
-                
+                left = self.diffWaysToCompute(expression[:idx])
+                right= self.diffWaysToCompute(expression[idx+1:])
                 
                 
-#                 we are trying to get possible combinations of the left and right result
-                for l in left:
-                    for r in right:
+                
+                
+                for leftVal in left:
+                    for rightVal in right:
                         
-                        result.append(eval(str(l)+char+str(r)))
+                        res.append(eval(str(leftVal)+char+str(rightVal)))
                         
-                
-        
-        self.memo[expression]=result
-        return result
+        self.memo[expression]=res  
+        return res
                         
                         
