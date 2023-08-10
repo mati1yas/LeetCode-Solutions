@@ -17,17 +17,20 @@ class Solution:
         
         while left<=right:
             
-            while left<=right and nums[left]==nums[right]:
+            while left<right and nums[left]==nums[left+1]:
                 
                 left+=1
+                
+                
+            while left<right and nums[right]==nums[right-1]:
+                
+                right-=1
                 
                 
             
             mid=(left+right)//2
             
-            if left>right and nums[mid]!=target :
-                
-                return False
+            
             if nums[mid]==target:
                 return True
             
