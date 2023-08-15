@@ -17,16 +17,16 @@ class Solution:
         while root:
             
             if root.val>=x:
-                greater.next=ListNode(root.val)
+                greater.next=root
                 greater=greater.next
-                root=root.next
+                
             
             else:
-                smaller.next=ListNode(root.val)
+                smaller.next=root
                 smaller=smaller.next
-                root=root.next
+            root=root.next
             
-        
+        greater.next=None
         smaller.next=greater_dummy.next
         return smaller_dummy.next
             
