@@ -8,22 +8,20 @@ class Solution:
         
         
     
-        def reverse(root):
+        dummy=None
+        slow=dummy
+        cur=head
+        while head:
             
+            temp=head.next
+            head.next=slow
+            slow=head
+            head=temp
             
-            if not root or not root.next:
-                
-                return root
-             
-            r=reverse(root.next)
+        return  slow
             
-            root.next.next=root
-            root.next=None
-            
-            
-            return r
             
         
-        return reverse(head)
+        
         
         
