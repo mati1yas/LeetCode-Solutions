@@ -1,19 +1,28 @@
 class Solution:
     def minTaps(self, n: int, ranges: List[int]) -> int:
-        INF = int(1e9)
         
-        dp = [INF] * (n + 1)
         
-        dp[0] = 0
         
-        for i in range(n + 1):
-            tap_start = max(0, i - ranges[i])
-            tap_end = min(n, i + ranges[i])
+        
+        
+        dp =  [float('inf') for i in range(n+1)]
+        
+        
+        dp[0]=0
+        
+        
+        for cur in range(n+1):
             
-            for j in range(tap_start, tap_end + 1):
-                dp[tap_end] = min(dp[tap_end], dp[j] + 1)
+            cover_start= max(0,cur-ranges[cur])
+            
+            cover_end= min(n,cur+ranges[cur])
+            
+            for prev in range(cover_start,cover_end+1):
+                
+                dp[cover_end]=min(dp[cover_end],dp[prev]+1)
+                
+    
         
-        if dp[n] == INF:
-            return -1
+        return dp[n] if dp[n]!= float('inf') else -1
         
-        return dp[n]
+        
