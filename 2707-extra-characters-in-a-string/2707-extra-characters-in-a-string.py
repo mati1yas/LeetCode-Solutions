@@ -6,21 +6,21 @@ class Solution:
         dictionary_words=set(dictionary)
         
         
-        def canBeBuilt(start):
+        def consider(start):
             
             
             r= float('inf')
             for end in range(start,len(s)):
                 
                 if s[start:end+1] in dictionary_words:
-                    r=min(r,buildSub(end+1))
+                    r=min(r,countExtras(end+1))
 
                 
 
 
             return r
         memo={}
-        def buildSub(index):
+        def countExtras(index):
             
             
             if index==len(s):
@@ -31,12 +31,12 @@ class Solution:
                 
                 return memo[index]
             
-            notTake=buildSub(index+1)+1
+            notTake=countExtras(index+1)+1
             
             
-            take=  canBeBuilt(index)
+            take=  consider(index)
             
             memo[index]=min(notTake,take)
             return min(notTake,take)
         
-        return buildSub(0)
+        return countExtras(0)
