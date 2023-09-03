@@ -31,12 +31,12 @@ class Solution:
                 
                 return memo[index]
             
-            notTake=countExtras(index+1)+1
+            isExtra=countExtras(index+1)+1  # consider this current char as extra
             
             
-            take=  consider(index)
+            notExtra  =  consider(index)
             
-            memo[index]=min(notTake,take)
-            return min(notTake,take)
+            memo[index]=min(notExtra,isExtra)
+            return min(notExtra,isExtra)
         
         return countExtras(0)
