@@ -27,8 +27,6 @@ class Solution:
                 
                 validAns+=len(nums)-r-1
                 
-                
-                
                 diff= calcArth(count[nums[l]])-calcArth(count[nums[l]]-1)
                 
                 count[nums[l]] -= 1
