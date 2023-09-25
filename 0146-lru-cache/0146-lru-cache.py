@@ -1,4 +1,3 @@
-
 from collections import OrderedDict
 class LRUCache:
 
@@ -8,20 +7,26 @@ class LRUCache:
 
     def get(self, key: int) -> int:
         
-        if key in self.cache:
-            self.cache.move_to_end(key)            
+        if key in self.cache:            
+            self.cache.move_to_end(key,last=False)           
+            
             return self.cache[key]
         
         return -1 
-        
-        
-
+    
     def put(self, key: int, value: int) -> None:
         
+        
         self.cache[key]=value
-        self.cache.move_to_end(key)
-        if len(self.cache)>self.capacity:
-            self.cache.popitem(last=False)
+        
+        self.cache.move_to_end(key,last=False)
+        
+        if len(self.cache)>self.capacity:            
+            self.cache.popitem()
+        
+        
+        
+        
         
 
 
