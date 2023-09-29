@@ -6,37 +6,48 @@ class Solution:
         dictionary_words=set(dictionary)
         
         
-        def consider(start):
+        self.memo={}
+        
+        def partOfString (start):
             
             
-            r= float('inf')
-            for end in range(start,len(s)):
+            
+            r=float('inf')
+            
+            
+            for end in range(start, len(s)):
                 
-                if s[start:end+1] in dictionary_words:
+                
+                if s[start:end+1]  in dictionary_words:
+                    
                     r=min(r,countExtras(end+1))
-
-                
-
-
+            
             return r
-        memo={}
+            
+            
+        
+        
+        
         def countExtras(index):
             
-            
-            if index==len(s):
+            if index>=len(s):
                 return 0
             
-            
-            if index in memo:
-                
-                return memo[index]
-            
-            isExtra=countExtras(index+1)+1  # consider this current char as extra
+            if index  in self.memo:
+                return self.memo[index]
             
             
-            notExtra  =  consider(index)
+            considerItExtra=countExtras(index+1)+1
             
-            memo[index]=min(notExtra,isExtra)
-            return min(notExtra,isExtra)
+            considerNotExtra=partOfString(index)
+            
+            self.memo[index]=min(considerItExtra,considerNotExtra)
+            return self.memo[index]
+        
         
         return countExtras(0)
+            
+            
+            
+            
+            
