@@ -25,8 +25,8 @@ class Solution:
         
         
         ans=[]
-        for col in sorted(self.column):            
-            ans.append([y for x,y in sorted(self.column[col]) ])
+        for col in sorted(self.column):
+            ans.append([val for row,val in sorted(self.column[col])])
         
         return ans
         
