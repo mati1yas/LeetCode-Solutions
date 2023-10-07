@@ -8,22 +8,34 @@ class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         
         
+        
+        
+        
+        
+        
         self.column=defaultdict(list)
+        queue=deque()
+        queue.append((root,0,0))
         
         
-        def dfs(node,col,row):
+        
+        while queue:
+            
+            
+            node,col,row = queue.popleft()
             
             if not node:
-                return 
+                continue
             
             self.column[col].append((row,node.val))
             
-            dfs(node.left,col-1,row+1)
-            dfs(node.right,col+1,row+1)
             
-        dfs(root,0,0)
+            
+            queue.append((node.left,col-1,row+1))
+            queue.append((node.right,col+1,row+1))
         
         
+         
         ans=[]
         for col in sorted(self.column):
             ans.append([val for row,val in sorted(self.column[col])])
