@@ -29,7 +29,7 @@ class Solution:
         carry=0
         
         head=None
-        while l1 or l2:
+        while l1 or l2 or carry:
             
             if l1:
                 x1=l1.val
@@ -53,21 +53,11 @@ class Solution:
             
             if l1:
                 l1=l1.next
-            else:
-                l1=None
+            
                 
             if l2:
                 l2=l2.next
-            else:
-                l2=None
-                
-                
-                
-        if carry:            
-            cur=ListNode(carry)
-            cur.next=head
-            head=cur
-                
+         
         return head
             
             
