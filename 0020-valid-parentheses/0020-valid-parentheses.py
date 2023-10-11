@@ -2,30 +2,38 @@ class Solution:
     def isValid(self, s: str) -> bool:
         
         
-        stack=[]
+
         
-        
-        stack=[]
-        
-        closing={
-            "}":"{",
-            "]":"[",
-            ")":"("
+      
+    
+        openings='([{'
+        closings=')}]'
+        matches={
+            ')':'(',
+            ']':'[',
+            '}':'{',
         }
         
+        stack = [ ]
         for char in s:
             
-
-            if char in "}])" and not stack:
-                return False
-            elif char in "}])"  and closing[char]!=stack[-1] :
-                return False
-            elif char in "[{(":
-                stack.append(char)
-            else:
-                stack.pop()
-                
             
+            
+            if char in openings:
+                stack.append(char)
                 
-        return not stack   
-       
+            elif char in closings:
+                if not stack:
+                    return False
+                if matches[char]!=stack[-1]:
+                    return False
+                else:
+                    stack.pop()
+                    
+        
+                    
+        return stack==[]
+                    
+            
+            
+            
