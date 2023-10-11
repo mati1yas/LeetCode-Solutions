@@ -42,10 +42,9 @@ class Solution:
                 x2=0
                 
             
-            val=(carry+x1+x2)%10
-            carry=(carry+x1+x2)//10
+           
             
-            
+            carry,val = divmod(carry+x1+x2,10)
             
             cur=ListNode(val)
             cur.next=head
@@ -62,8 +61,9 @@ class Solution:
             else:
                 l2=None
                 
-        if carry:
-            
+                
+                
+        if carry:            
             cur=ListNode(carry)
             cur.next=head
             head=cur
