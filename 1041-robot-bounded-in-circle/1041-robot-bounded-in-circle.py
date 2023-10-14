@@ -50,7 +50,7 @@ class Solution:
 
                     elif curDir=='w':
                         x-=1
-
+            print()
             if x==0 and y==0:
                 return True
         
