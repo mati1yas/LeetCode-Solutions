@@ -4,7 +4,7 @@ class Solution:
         
         frequency = Counter(nums)
         
-        vacancy= defaultdict(int)
+        need = defaultdict(int)
         
         
         
@@ -16,10 +16,10 @@ class Solution:
                 continue
                 
             
-            if vacancy [num]>0:
+            if need [num]>0:
                 frequency[num]-=1
-                vacancy[num]-=1
-                vacancy[num+1]+=1
+                need[num]-=1
+                need[num+1]+=1
             
             
             elif  frequency[num]>0 and frequency[num+1]>0 and frequency[num+2]>0:
@@ -28,7 +28,7 @@ class Solution:
                 frequency[num+2]-=1
                 frequency[num]-=1
                 
-                vacancy[num+3]+=1
+                need[num+3]+=1
                 
             else:
                 return False
