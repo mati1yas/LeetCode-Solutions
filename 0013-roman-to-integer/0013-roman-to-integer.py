@@ -18,19 +18,32 @@ class Solution:
          }
             
          
-        ans=0
-
-
+       
         i=0
+        ans=0
+        while i < len(s):
+            
+#             let's first consider the big combinations 
 
-        while i<len(s):
 
-            if i<len(s)-1 and s[i:i+2] in romanEquivalent:
+
+            if i+1<len(s) and s[i:i+2] in romanEquivalent:
+                
                 ans+=romanEquivalent[s[i:i+2]]
                 i+=2
-            else:
-                ans+=romanEquivalent[s[i]]
+                
+        
+            else:  # we consider one char roman number 
+                
+        
+                ans+=romanEquivalent[s[i:i+1]]
                 i+=1
-
+                
         return ans
-
+        
+            
+            
+            
+            
+            
+            
