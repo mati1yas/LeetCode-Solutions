@@ -5,36 +5,30 @@ class Solution:
         
 
             
-            
-            
-        mostBeautiful=0
+        mostBeautiful= 0 
+    
         for i in range(len(maxHeights)):
             
-            heights=[0 for _ in range(len(maxHeights))]
             
-            heights[i] = maxHeights[i]
+            heights = [ maxHeights[i] for i in range(len(maxHeights))]
             
             
-            # increasing side
             
             for j in range(i-1,-1,-1):
                 
+                heights[j]=min(heights[j],heights[j+1])
                 
-                heights[j]=min(maxHeights[j],heights[j+1])
-            
-            # decreasing side
-            
+                
             for j in range(i+1,len(maxHeights)):
-                heights[j]=min(maxHeights[j],heights[j-1])
                 
+                heights[j]=min(heights[j],heights[j-1])
+             
+            mostBeautiful= max(mostBeautiful,sum(heights))
+            
+            
+        return mostBeautiful
                 
-                
-            mostBeautiful=max(sum(heights),mostBeautiful)
-                
-                
-        return mostBeautiful 
-                
-                
+            
                 
                 
             
