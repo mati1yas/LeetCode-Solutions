@@ -7,46 +7,45 @@
 class Solution:
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
         
-        
+      
+    
         graph=defaultdict(list)
         
-        def binaryDfs(root):
+        
+        def dfs(root,parent):
             
             if not root:
                 return 
             
+            if root and parent:
+                graph[root.val].append(parent.val)
+                graph[parent.val].append(root.val)
             
-            if root.left:
-                graph[root.val].append(root.left.val)
-                graph[root.left.val].append(root.val)
-                            
+            dfs(root.left,root)
+            dfs(root.right,root)
             
-            if root.right:
-                
-                graph[root.val].append(root.right.val)
-                graph[root.right.val].append(root.val)
-                
-                
-            binaryDfs(root.left)
-            binaryDfs(root.right)
-            
-            
-        binaryDfs(root)
+        dfs(root,None)
         
-        
-        queue=collections.deque()
+        queue= collections.deque()
         queue.append((start,0))
+        dist=0
         
-        visited=set({start})
-        ans=0  
+        visited=set()
+        visited.add(start)
         while queue:
-            cur,dist=queue.popleft()
-            ans=max(ans,dist)
-            
+            cur,t=queue.popleft()
+            dist=max(dist,t)
             for nbr in graph[cur]:
                 if nbr not in visited:
-                    queue.append((nbr,dist+1))
                     visited.add(nbr)
-                    
-        return ans
+                    queue.append((nbr,t+1))
+                
+        return dist
+                
+            
+            
+        
+        
+            
+            
             
